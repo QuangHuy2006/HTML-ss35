@@ -111,7 +111,18 @@ function render(choice) {
 }
 function filtered() {
   const filteredPortfolio = portfolio.filter(
-    (value) => value.Status === findElement.value
+    (value) => value.Name === findElement.value
   );
   render(filteredPortfolio);
+}
+function filteredStatus() {
+  const filteredPortfolio = portfolio.filter(
+    (value) => value.Status === getChoosenValue()
+  );
+  render(filteredPortfolio);
+}
+function getChoosenValue(){
+  const choosen = document.querySelector("#select");
+  const choosenValue = choosen.value;
+  return choosenValue.toString();
 }
