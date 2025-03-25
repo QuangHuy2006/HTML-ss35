@@ -10,7 +10,6 @@ const cancel = document.querySelector("#cancel");
 const addBtn = document.querySelector("#added");
 const error1 = document.querySelector("#error");
 const error2 = document.querySelector("#error2");
-const btnEdit = document.querySelector("#btnForEdit");
 function getSelectedValue() {
   const status = document.querySelector('input[name="status"]:checked');
   return status.value;
@@ -24,7 +23,6 @@ btn.addEventListener("click", function (event) {
   firstElementTable.style.background = "rgba(0,0,0,0.5)";
   findElement.style.background = "rgba(0,0,0,0.5)";
   select.style.background = "rgba(0,0,0,0.5)";
-  btnEdit.style.background = "rgba(0,0,0,0.5)";
 });
 closeBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -70,12 +68,12 @@ addBtn.addEventListener("click", function (event) {
     firstElementTable.style.background = "whitesmoke";
     findElement.style.background = "white";
     select.style.background = "white";
-    render();
+    render(portfolio);
   }
 });
-function render() {
+function render(choice) {
   table.innerHTML = "";
-  portfolio.forEach((value, index) => {
+  choice.forEach((value, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
         <td>${value.Id}</td>
@@ -93,9 +91,9 @@ function render() {
       function (event) {
         event.preventDefault();
         if (confirm(`Bạn muốn xóa danh mục này không`)) {
-          portfolio.splice(index, 1);
+          choice.splice(index, 1);
           render();
-          localStorage.removeItem(`portfolio${index}`);
+          localStorage.removeItem("portfolio");
         } else {
           alert(`Danh mục chưa được xóa`);
         }
@@ -103,17 +101,17 @@ function render() {
     );
     tr.querySelector("#revise").addEventListener("click", function (event) {
       event.preventDefault();
-      portfolio[index].Id = prompt("Nhập mã danh mục mới");
-      portfolio[index].Name = prompt("Nhập tên danh mục mới");
-      console.log(portfolio);
+      choice[index].Id = prompt("Nhập mã danh mục mới");
+      choice[index].Name = prompt("Nhập tên danh mục mới");
+      console.log(choice);
       render();
     });
     table.appendChild(tr);
   });
 }
-function filtered(){
-    const filteredPortfolio = portfolio.filter(value => value.Status === findElement.value);
-    portfolio = [];
-    portfolio.push(...filteredPortfolio);
-    render();
+function filtered() {
+  const filteredPortfolio = portfolio.filter(
+    (value) => value.Status === findElement.value
+  );
+  render(filteredPortfolio);
 }
