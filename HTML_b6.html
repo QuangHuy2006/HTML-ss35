@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./css_b6.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h1>Danh mục</h1>
+      </div>
+      <div>
+        <button id="add">Thêm một danh mục</button>
+      </div>
+    </div>
+    <div class="nav">
+      <select id="select">
+        <option>--Trạng Thái--</option>
+        <option>Đang hoạt động</option>
+        <option>Ngừng hoạt động</option>
+      </select>
+      <div class="search">
+            <input
+            type="text"
+            id="input" 
+            placeholder="Tìm kiếm danh mục theo tên"
+            />
+        <button onclick="filtered()" class="btnForEdit"><ion-icon name="search-outline"></ion-icon></button>
+      </div>
+    </div>
+    <div>
+      <div class="bookmarkoutlay">
+        <div class="bookmarkContent">
+          <div class="bookmark-header">
+            <div>Thêm mới danh mục</div>
+            <div>
+              <button id="close">X</button>
+            </div>
+          </div>
+          <div class="bookmark-body">
+            <div>Mã danh mục</div>
+            <div>
+              <input
+                type="text"
+                id="input1" />
+            </div>
+            <span id="error"></span>
+            <div>Tên danh mục</div>
+            <div>
+              <input
+                type="text"
+                id="input2" />
+            </div>
+            <span id="error2"></span>
+            <div>
+              <span>Trạng thái</span>
+              <div
+                id="status">
+                <input
+                  type="radio"
+                  name="status"
+                  value="Đang hoạt động"
+                  onclick="getSelectedValue()"
+                  style="accent-color: blue" />Đang hoạt động
+                <input
+                  type="radio"
+                  name="status"
+                  value="Ngừng hoạt động"
+                  onclick="getSelectedValue()"
+                  style="accent-color: blue" />Ngừng hoạt động
+              </div>
+              <br />
+              <div style="border-bottom: 1px solid lightgray"></div>
+            </div>
+          </div>
+          <div class="bookmark-footer">
+            <button id="cancel">Hủy</button>
+            <button id="added">Thêm</button>
+          </div>
+        </div>
+      </div>
+      <table id="table" >
+        <thead>
+          <tr>
+            <th>Mã danh mục&darr;</th>
+            <th>Tên danh mục&darr;</th>
+            <th>Trạng thái</th>
+            <th>Chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+    <script src="./js_b6.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
